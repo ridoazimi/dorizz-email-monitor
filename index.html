@@ -338,8 +338,11 @@
     });
 
     // Initial load
-    loadData();
-    renderIcons();
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", () => { loadData(); renderIcons(); });
+    } else {
+      loadData(); renderIcons();
+    }
   </script>
 </body>
 </html>
